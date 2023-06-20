@@ -1,5 +1,5 @@
 import { Link, Outlet } from "react-router-dom";
-
+import PageContainer from "./PageContainer";
 const NavigationBar = () => {
   return (
     <>
@@ -7,7 +7,10 @@ const NavigationBar = () => {
         <Link to="/">Home</Link>
         <Link to="/Movies">Movies</Link>
       </nav>
+      <PageContainer>
       <Outlet />
+
+      </PageContainer>
     </>
   );
 };
