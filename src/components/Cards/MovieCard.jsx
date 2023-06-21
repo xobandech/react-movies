@@ -1,11 +1,12 @@
 const MovieCard = ({ movie }) => {
-    const { name, description, logo, year } = movie
+    const { name, description, poster, year } = movie
     return (
-        <div>
+        <div className="min-w-[200px] w-[18%]">
+            <img className="" src={poster.url} alt={name} />
+            <div className="flex justify-between">
             <h1>{name}</h1>
-            <img src={logo} alt={name} />
-            <p>{description}</p>
             <p>{year}</p>
+            </div>
         </div>
     )
 }
