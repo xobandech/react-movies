@@ -1,42 +1,71 @@
-import { useState } from "react";
+import { useState, useEffect, useContext } from "react";
 import MovieCard from "../components/Cards/MovieCard";
-
+import { MoviesContext } from "../contexts/MoviesContext";
 export default function MoviesPage() {
-  const [movies, setMovies] = useState([]);
+  const { movies, setMovies } = useContext(MoviesContext)
+  const [currentPage, setCurrentPage] = useState(1);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const getMoviesByPage = async (e) => {
-    e.preventDefault(); // Prevent the default form submission behavior
-    const apiKey = "1ZTHHEM-879MGTV-HBK76WM-C77A539"; // Replace with your own API key
-    const page = e.target[0].value; // Access the value of the input field using the name attribute
-    await fetch(`https://api.kinopoisk.dev/v1.3/movie/${page}`, {
-      method: "GET",
-      headers: {
-        accept: "application/json",
-        "X-API-KEY": apiKey,
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        setMovies(data.docs);
-        console.log(data);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+  const loadMoviesOnScroll = async () => {
+    const apiKey = "1ZTHHEM-879MGTV-HBK76WM-C77A539";
+    setIsLoading(true);
+
+    try {
+      const response = await fetch(
+        `https://api.kinopoisk.dev/v1.3/movie?page=${currentPage}&limit=12`,
+        { 
+          method: "GET",
+          headers: {
+            accept: "application/json",
+            "X-API-KEY": apiKey,
+          },
+        }
+      );
+      const data = await response.json();
+      setMovies([...movies, ...data.docs]);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setIsLoading(false);
+    }
   };
+
+  useEffect(() => {
+    loadMoviesOnScroll(currentPage);
+  }, [currentPage]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+      const isScrolledToEnd = scrollTop + clientHeight >= scrollHeight - 5;
+      if (isScrolledToEnd && !isLoading) {
+        setCurrentPage(currentPage+1);
+        console.log("+1");
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [currentPage, isLoading]);
 
   return (
     <>
       <div className="w-[1030px] bg-white">
         <h1>Movies</h1>
-        <form onSubmit={getMoviesByPage}>
+        <form onSubmit={loadMoviesOnScroll}>
           <input type="text" />
           <button type="submit">Get Movie by ID</button>
         </form>
-        {movies.map(({poster, name, year, description}) => {
-          const movie = {poster, name, year, description} 
+
+        <div className="grid gap-5 justify-items-center grid-cols-3 max-md:grid-cols-2 px-10 ">
+        {movies.map(({ poster, name, year, description }) => {
+          const movie = { poster, name, year, description };
           return <MovieCard movie={movie} />;
         })}
+        </div>
       </div>
     </>
   );
