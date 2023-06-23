@@ -1,4 +1,4 @@
-import SideBarMenu from "../components/Sidebar";
+import SideBarMenu from "../components/Layout/Sidebar";
 
 const HomePage = () => {
   return (

@@ -6,11 +6,28 @@ export default function MovieDetailsPage() {
   const { id } = useParams();
   const { movies } = useContext(MoviesContext);
   const [movie, setMovie] = useState(null);
+  const apiKey = '1ZTHHEM-879MGTV-HBK76WM-C77A539';
 
   useEffect(() => {
-    const selectedMovie = movies.find((movie) => movie.id === parseInt(id));
-    setMovie(selectedMovie);
-  }, [movies, id]);
+    const fetchMovieDetails = async () => {
+      try {
+        const response = await fetch(`https://api.kinopoisk.dev/v1/movie/${id}`, {
+          method: 'GET',
+          headers: {
+            'accept': 'application/json',
+            'X-API-KEY': apiKey
+          }
+        });
+        const data = await response.json();
+        setMovie(data);
+        console.log(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchMovieDetails();
+  }, [id]);
 
   if (!movie) {
     return <div>Loading...</div>;
