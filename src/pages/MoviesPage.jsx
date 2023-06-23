@@ -45,7 +45,7 @@ export default function MoviesPage() {
       const isScrolledToEnd = scrollTop + clientHeight >= scrollHeight - 5;
       if (isScrolledToEnd && !isLoading) {
         setCurrentPage(currentPage + 1);
-        console.log("+1");
+        console.log(movies);
       }
     };
 
@@ -66,9 +66,9 @@ export default function MoviesPage() {
         </form>
 
         <div className="grid gap-5 justify-items-center grid-cols-3 max-md:grid-cols-2 px-10 ">
-          {movies.map(({ poster, name, year, description }) => {
-            const movie = { poster, name, year, description };
-            return <MovieCard movie={movie} />;
+          {movies.map(({ poster, name, year, description, id }) => {
+            const movie = { poster, name, year, description, id };
+            return <MovieCard key={id} movie={movie} />;
           })}
         </div>
       </div>
