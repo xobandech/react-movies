@@ -1,11 +1,12 @@
 import { useState, useEffect, useContext } from "react";
 import MovieCard from "../components/Cards/MovieCard";
 import { MoviesContext } from "../contexts/MoviesContext";
-export default function MoviesPage() {
-  const { movies, setMovies } = useContext(MoviesContext)
-  const [currentPage, setCurrentPage] = useState(1);
-  const [isLoading, setIsLoading] = useState(false);
 
+export default function MoviesPage() {
+  const { movies, setMovies } = useContext(MoviesContext);
+  const { loadedPages, setLoadedPages } = useContext(MoviesContext);
+  const { currentPage, setCurrentPage } = useContext(MoviesContext);
+  const [isLoading, setIsLoading] = useState(false);
   const loadMoviesOnScroll = async () => {
     const apiKey = "1ZTHHEM-879MGTV-HBK76WM-C77A539";
     setIsLoading(true);
@@ -13,7 +14,7 @@ export default function MoviesPage() {
     try {
       const response = await fetch(
         `https://api.kinopoisk.dev/v1.3/movie?page=${currentPage}&limit=12`,
-        { 
+        {
           method: "GET",
           headers: {
             accept: "application/json",
@@ -22,7 +23,10 @@ export default function MoviesPage() {
         }
       );
       const data = await response.json();
+      if (!loadedPages.includes(currentPage))
       setMovies([...movies, ...data.docs]);
+      setLoadedPages([...loadedPages, currentPage]);
+      console.log(loadedPages);
     } catch (error) {
       console.error(error);
     } finally {
@@ -36,10 +40,11 @@ export default function MoviesPage() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+      const { scrollTop, scrollHeight, clientHeight } =
+        document.documentElement;
       const isScrolledToEnd = scrollTop + clientHeight >= scrollHeight - 5;
       if (isScrolledToEnd && !isLoading) {
-        setCurrentPage(currentPage+1);
+        setCurrentPage(currentPage + 1);
         console.log("+1");
       }
     };
@@ -61,10 +66,10 @@ export default function MoviesPage() {
         </form>
 
         <div className="grid gap-5 justify-items-center grid-cols-3 max-md:grid-cols-2 px-10 ">
-        {movies.map(({ poster, name, year, description }) => {
-          const movie = { poster, name, year, description };
-          return <MovieCard movie={movie} />;
-        })}
+          {movies.map(({ poster, name, year, description }) => {
+            const movie = { poster, name, year, description };
+            return <MovieCard movie={movie} />;
+          })}
         </div>
       </div>
     </>
