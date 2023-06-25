@@ -1,4 +1,4 @@
-import { Routes, Route, BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import MoviesProvider from "./contexts/MoviesContext";
 import MoviesPage from "./pages/MoviesPage";
 import HomePage from "./pages/HomePage";
@@ -6,7 +6,7 @@ import ShowsPage from "./pages/ShowsPage";
 import MovieDetailsPage from "./pages/MovieDetailPage";
 import Layout from "./components/Layout/Layout";
 import "./App.css";
-import Playground from "./components/Playgorund";
+import SearchResultsPage from "./pages/SearchResultPage";
 
 export default function App() {
   return (
@@ -18,7 +18,7 @@ export default function App() {
             <Route path="movies" element={<MoviesPage />} />
             <Route path="movies/:id" element={<MovieDetailsPage />} />
             <Route path="tv-shows" element={<ShowsPage />} />
-            <Route path="pg" element={<Playground />} />
+            <Route path="search" element={<SearchResultsPage />} />
           </Route>
         </Routes>
       </BrowserRouter>

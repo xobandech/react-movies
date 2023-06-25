@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import SearchComponent from "../SearchBar";
+
 const NavigationBar = () => {
   return (
     <>
@@ -6,7 +8,9 @@ const NavigationBar = () => {
         <Link to="/" className="self-start">KINOMORE</Link>
         <div className="justify-center [&>.link]:xl:hidden [&>a]:px-5 flex w-[100%]">
         <Link to="/movies" className="link">Movies</Link>
+        
         <Link to="/tv-shows" className="link">TV-Shows</Link>
+        <SearchComponent />
         </div>
       </nav>
     </>
