@@ -12,7 +12,7 @@ const NavigationBar = () => {
 
         <Link to="/tv-shows" className="link">TV-Shows</Link>
         </DropdownComponent>
-        <Link to="/" className="self-start">KINOMORE</Link>
+        <Link to="/" className="self-start">MOVIESEA</Link>
         <SearchComponent />
         {/* </div> */}
       </nav>
