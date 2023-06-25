@@ -7,7 +7,7 @@ import MovieDetailsPage from "./pages/MovieDetailPage";
 import Layout from "./components/Layout/Layout";
 import "./App.css";
 import SearchResultsPage from "./pages/SearchResultPage";
-
+import Playground from "./Playground";
 export default function App() {
   return (
     <MoviesProvider>
@@ -19,9 +19,10 @@ export default function App() {
             <Route path="movies/:id" element={<MovieDetailsPage />} />
             <Route path="tv-shows" element={<ShowsPage />} />
             <Route path="search" element={<SearchResultsPage />} />
+            <Route path='pg' element={<Playground/>} />
           </Route>
         </Routes>
       </BrowserRouter>
     </MoviesProvider>
-  );
+  );  
 }
