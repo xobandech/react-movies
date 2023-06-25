@@ -60,7 +60,7 @@ export default function MovieDetailsPage() {
           <h1>
             {movie.name} ({movie.year})
           </h1>
-          <p className="mb-6 text-[#6e7979]">{movie.ageRating}+</p>
+          <p className="mb-6 text-[#6e7979]">{movie.ageRating ? movie.ageRating : 16}+</p>
           <button className="outline rounded-xl px-3 outline-2 outline-red-200">
             I want to view
           </button>
@@ -96,12 +96,12 @@ export default function MovieDetailsPage() {
             )}
             <TableRow>
               <div>Age</div>
-              <div>{movie.ageRating}+</div>
+              <div>{movie.ageRating ? movie.ageRating : 16}+</div>
             </TableRow>
             <TableRow>
               <div>Duration</div>
               <div>
-                {movie.seriesLength ? movie.seriesLength : movie.movieLength}
+                {movie.seriesLength ? movie.seriesLength : movie.movieLength} min.
               </div>
             </TableRow>
           </div>
