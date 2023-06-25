@@ -14,7 +14,11 @@ export default function SearchComponent() {
     <div className="flex items-center">
       <div className="flex rounded">
         <input  
-          
+          onKeyDown={(e) => {
+            if (e.key === 'Enter') {
+                handleSearch(searchString)
+            }
+          }}
           onChange={(e) => setSearchString(e.target.value)}
           type="text"
           className="pl-3 rounded-s-xl focus:bg-white bg-[#333] focus:outline-none focus:text-black"
