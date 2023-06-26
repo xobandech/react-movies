@@ -7,7 +7,7 @@ function classNames(...classes) {
 
 export default function DropdownComponent() {
     return (
-      <Menu as="div" className="max-sm:inline-block hidden relative text-left">
+      <Menu as="div" className="max-2xl:inline-block hidden relative text-left">
       <div className="flex">
           <Menu.Button className="flex items-center px-4 py-2 text-sm font-medium text-gray-700 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100">
               <img src={menuImage} alt="menu button" className="h-[20px]" />

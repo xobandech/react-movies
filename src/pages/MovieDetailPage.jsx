@@ -34,41 +34,40 @@ export default function MovieDetailsPage() {
   }
 
   return (
-    <div className="bg-white w-[1030px] h-[100vh]">
-      <div className="flex">
-        <div className="flex flex-col items-center w-[90%]">
+    <div className="bg-white w-[1030px] min-h-[100vh]">
+      <div className="flex max-sm:block">
+        <div className="flex flex-col items-center">
         {movie.poster && movie.poster.url && (
             <img
               src={movie.poster.url}
-              className="max-w-[400px] w-[100%] p-6 min-w-[350px]"
-              alt=""
+              className="max-w-[500px] w-[100%] max-sm:w-[200px]  max-sm:min-w-[300px] p-6 min-w-[350px]"
+              alt="movie poster"
             />
           )}
           {movie.videos && movie.videos.trailers &&  movie.videos.trailers[0] && (
-            <div>
+            <div className="max-sm:hidden">
               <iframe
                 title="Trailer"
                 src={movie.videos.trailers[0].url}
-                className="max-w-[100%]"
+                className="max-w-[100%] max-sm:max-w-[70%]"
                 frameborder="0"
               ></iframe>
-              <div className="justify-between flex"></div>
             </div>
           )}
         </div>
-        <div className="block py-10">
+        <div className="block py-10 max-sm:flex max-sm:justify-center mx-4 flex-col">
           <h1>
             {movie.name} ({movie.year})
           </h1>
           <p className="mb-6 text-[#6e7979]">{movie.ageRating ? movie.ageRating : 16}+</p>
-          <button className="outline rounded-xl px-3 outline-2 outline-red-200">
+          <button className="outline rounded-xl w-[45%] px-3 outline-2 outline-red-200">
             I want to view
           </button>
           <div>
             <h2>Description</h2>
             <p>{movie.description}</p>
             {movie.year && (
-              <TableRow>
+              <TableRow>  
                 <div>Year</div>
                 <div>{movie.year}</div>
               </TableRow>
@@ -104,6 +103,14 @@ export default function MovieDetailsPage() {
                 {movie.seriesLength ? movie.seriesLength : movie.movieLength} min.
               </div>
             </TableRow>
+          </div>
+          <div className="mt-3 max-sm:flex max-sm:justify-center sm:hidden">
+          <iframe
+                title="Trailer"
+                src={movie.videos.trailers[0].url}
+                className="max-w-[100%] max-sm:max-w-[70%]"
+                frameborder="0"
+              ></iframe>
           </div>
         </div>
         {/* Render other movie details */}
