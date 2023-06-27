@@ -6,8 +6,9 @@ export default function MoviesPage() {
   const { loadedPages, setLoadedPages } = useContext(MoviesContext);
   const { currentPage, setCurrentPage } = useContext(MoviesContext);
   const [isLoading, setIsLoading] = useState(false);
+  const apiKey = process.env.REACT_APP_KINOPOISK_API_KEY;
+
   const loadMoviesOnScroll = async () => {
-    const apiKey = process.env.REACT_APP_KINOPOISK_API_KEY;
     setIsLoading(true);
 
     try {
@@ -23,7 +24,7 @@ export default function MoviesPage() {
       );
       const data = await response.json();
       if (!loadedPages.includes(currentPage))
-      setMovies([...movies, ...data.docs]);
+        setMovies([...movies, ...data.docs]);
       setLoadedPages([...loadedPages, currentPage]);
       console.log(loadedPages);
     } catch (error) {
@@ -60,7 +61,7 @@ export default function MoviesPage() {
       <div className="w-[1030px] bg-white">
         <h1>Movies</h1>
         <div className="grid gap-5 justify-items-center grid-cols-3 max-md:grid-cols-2 px-10 ">
-        {movies.map(({ poster, name, year, description, id }) => {
+          {movies.map(({ poster, name, year, description, id }) => {
             const movie = { poster, name, year, description, id };
             return <MovieCard key={id} movie={movie} />;
           })}

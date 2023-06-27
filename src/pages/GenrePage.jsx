@@ -1,40 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import MovieCard from "../components/Cards/MovieCard";
-const genres = {
-  anime: "аниме",
-  biography: "биография",
-  action: "боевик",
-  western: "вестерн",
-  war: "военный",
-  detective: "детектив",
-  children: "детский",
-  adult: "для взрослых",
-  documentary: "документальный",
-  drama: "драма",
-  game: "игра",
-  history: "история",
-  comedy: "комедия",
-  concert: "концерт",
-  "short-film": "короткометражка",
-  crime: "криминал",
-  melodrama: "мелодрама",
-  music: "музыка",
-  animation: "мультфильм",
-  musical: "мюзикл",
-  news: "новости",
-  adventure: "приключения",
-  family: "семейный",
-  sport: "спорт",
-  "talk-show": "ток-шоу",
-  thriller: "триллер",
-  horror: "ужасы",
-  "science-fiction": "фантастика",
-  "film-noir": "фильм-нуар",
-  fantasy: "фэнтези",
-  ceremony: "церемония",
-};
-
+import { GENRES } from "../constants/genres";
 const GenrePage = () => {
   const { genre } = useParams();
   const [movies, setMovies] = useState([]);
@@ -47,7 +14,7 @@ const GenrePage = () => {
       setIsLoading(true);
       try {
         const response = await fetch(
-          `https://api.kinopoisk.dev/v1.3/movie?page=${currentPage}&limit=12&genres.name=${genres[genre]}`,
+          `https://api.kinopoisk.dev/v1.3/movie?page=${currentPage}&limit=12&genres.name=${GENRES[genre]}`,
           {
             method: "GET",
             headers: {
