@@ -88,7 +88,7 @@ export default function MovieDetailsPage() {
             <TableRow>
               <div>Country</div>
               <div>
-                {movie.premiere &&
+                {movie.premiere && movie.premiere[0] && 
                   Object.keys(movie.premiere)[0].charAt(0).toUpperCase() +
                     Object.keys(movie.premiere)[0].slice(1)}
               </div>
@@ -118,6 +118,9 @@ export default function MovieDetailsPage() {
               </div>
             </TableRow>
           </div>
+          {movie.videos &&
+            movie.videos.trailers &&
+            movie.videos.trailers[0] && (
           <div className="my-10 max-sm:flex max-sm:justify-center sm:hidden">
             <iframe
               title="Trailer"
@@ -126,6 +129,7 @@ export default function MovieDetailsPage() {
               frameborder="0"
             ></iframe>
           </div>
+            )}
         </div>
         {/* Render other movie details */}
       </div>
