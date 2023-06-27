@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import MovieCard from "../components/Cards/MovieCard";
 import { GENRES } from "../constants/genres";
+
 const GenrePage = () => {
   const { genre } = useParams();
   const [movies, setMovies] = useState([]);
