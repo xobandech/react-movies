@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import MovieCard from "../components/Cards/MovieCard";
-import { MoviesContext } from "../contexts/MoviesContext";
+import { MoviesContext } from "../contexts/MoviesContext.tsx";
 export default function MoviesPage() {
   const { movies, setMovies } = useContext(MoviesContext);
   const { loadedPages, setLoadedPages } = useContext(MoviesContext);

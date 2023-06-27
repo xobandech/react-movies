@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import TableRow from "../components/TableRow";
+import TableRow from "../components/TableRow.tsx";
 export default function MovieDetailsPage() {
   const { id } = useParams();
   const [movie, setMovie] = useState(null);

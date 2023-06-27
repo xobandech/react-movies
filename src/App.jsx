@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import MoviesProvider from "./contexts/MoviesContext";
+import MoviesProvider from "./contexts/MoviesContext.tsx";
 import MoviesPage from "./pages/MoviesPage";
 import HomePage from "./pages/HomePage";
 import ShowsPage from "./pages/ShowsPage";

@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import MovieCard from "../components/Cards/MovieCard";
-import { GENRES } from "../constants/genres";
-
+import { GENRES } from "../constants/genres.ts";
 const GenrePage = () => {
   const { genre } = useParams();
   const [movies, setMovies] = useState([]);
@@ -12,7 +11,7 @@ const GenrePage = () => {
 
   useEffect(() => {
     const fetchMoviesByGenre = async () => {
-      setIsLoading(true);
+      setIsLoading(true);   
       try {
         const response = await fetch(
           `https://api.kinopoisk.dev/v1.3/movie?page=${currentPage}&limit=12&genres.name=${GENRES[genre]}`,
