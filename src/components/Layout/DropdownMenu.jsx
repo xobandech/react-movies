@@ -1,13 +1,13 @@
 import menuImage from '../icons/menu-image.png'
 import { Menu, Transition } from "@headlessui/react";
-
+import { Link } from 'react-router-dom';
 function classNames(...classes) {
     return classes.filter(Boolean).join(" ");
 }
 
 export default function DropdownComponent() {
     return (
-      <Menu as="div" className="max-2xl:inline-block hidden relative text-left">
+      <Menu as="div" className="inline-block xl:hidden relative text-left">
       <div className="flex">
           <Menu.Button className="flex items-center px-4 py-2 text-sm font-medium text-gray-700 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100">
               <img src={menuImage} alt="menu button" className="h-[20px]" />
@@ -18,8 +18,8 @@ export default function DropdownComponent() {
                     <div className="py-1">
                         <Menu.Item>
                             {({ active }) => (
-                                <a
-                                    href="/"
+                                <Link
+                                    to="/"
                                     className={classNames(
                                         active
                                             ? "bg-gray-100 text-gray-900"
@@ -28,13 +28,13 @@ export default function DropdownComponent() {
                                     )}
                                 >
                                     Home
-                                </a>
+                                </Link>
                             )}
                         </Menu.Item>
                         <Menu.Item>
                             {({ active }) => (
-                                <a
-                                    href="movies"
+                                <Link
+                                    to="/movies"
                                     className={classNames(
                                         active
                                             ? "bg-gray-100 text-gray-900"
@@ -43,13 +43,13 @@ export default function DropdownComponent() {
                                     )}
                                 >
                                     Movies
-                                </a>
+                                </Link>
                             )}
                         </Menu.Item>
                         <Menu.Item>
                             {({ active }) => (
-                                <a
-                                    href="tv-shows"
+                                <Link
+                                    to="tv-shows"
                                     className={classNames(
                                         active
                                             ? "bg-gray-100 text-gray-900"
@@ -58,7 +58,7 @@ export default function DropdownComponent() {
                                     )}
                                 >
                                     TV-Shows
-                                </a>
+                                </Link>
                             )}
                         </Menu.Item>
                     </div>
