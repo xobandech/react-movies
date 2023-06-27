@@ -1,6 +1,10 @@
-import React from "react";
+import React, { ReactNode } from "react";
 
-const TableRow = ({ children }) => {
+type TableRowProps = {
+  children: ReactNode[];
+}
+
+const TableRow = ({ children }: TableRowProps) => {
   
   return <div className="flex">
     {children && children.map((child, index) => (
