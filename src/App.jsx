@@ -8,6 +8,7 @@ import Layout from "./components/Layout/Layout";
 import "./App.css";
 import SearchResultsPage from "./pages/SearchResultPage";
 import Playground from "./Playground";
+import GenrePage from "./pages/GenrePage";
 export default function App() {
   return (
     <MoviesProvider>
@@ -17,6 +18,7 @@ export default function App() {
             <Route index element={<HomePage />} />
             <Route path="movies" element={<MoviesPage />} />
             <Route path="movies/:id" element={<MovieDetailsPage />} />
+            <Route path="genres/:genre" element={<GenrePage />} />
             <Route path="tv-shows" element={<ShowsPage />} />
             <Route path="search" element={<SearchResultsPage />} />
             <Route path='pg' element={<Playground/>} />
