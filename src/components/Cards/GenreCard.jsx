@@ -5,6 +5,7 @@ const GenreCard = ({ genre }) => {
         <Link to={`genres/${genre.slug}`}> 
         <div className="min-w-[100px] max-w-[200px]">
             <img src="" alt="" />
+            {genre.name}
         </div>
         </Link>
     )
