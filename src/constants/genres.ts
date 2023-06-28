@@ -31,4 +31,3 @@ export enum GENRES  {
     fantasy = "фэнтези",
     ceremony = "церемония",
   };
-  
