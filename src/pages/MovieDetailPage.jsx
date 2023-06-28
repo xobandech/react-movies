@@ -61,7 +61,7 @@ export default function MovieDetailsPage() {
                   title="Trailer"
                   src={movie.videos.trailers[0].url}
                   className="max-w-[100%] max-sm:max-w-[70%]"
-                  frameborder="0"
+                  frameBorder="0"
                 ></iframe>
               </div>
             )}
@@ -126,7 +126,7 @@ export default function MovieDetailsPage() {
               title="Trailer"
               src={movie.videos.trailers[0].url}
               className="max-w-[100%] max-sm:max-w-[70%]"
-              frameborder="0"
+              frameBorder="0"
             ></iframe>
           </div>
             )}

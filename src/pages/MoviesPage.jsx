@@ -1,12 +1,12 @@
 import { useState, useEffect, useContext } from "react";
 import MovieCard from "../components/Cards/MovieCard";
 import { MoviesContext } from "../contexts/MoviesContext.tsx";
+const apiKey = process.env.REACT_APP_KINOPOISK_API_KEY;
 export default function MoviesPage() {
   const { movies, setMovies } = useContext(MoviesContext);
   const { loadedPages, setLoadedPages } = useContext(MoviesContext);
   const { currentPage, setCurrentPage } = useContext(MoviesContext);
   const [isLoading, setIsLoading] = useState(false);
-  const apiKey = process.env.REACT_APP_KINOPOISK_API_KEY;
 
   const loadMoviesOnScroll = async () => {
     setIsLoading(true);
@@ -23,10 +23,14 @@ export default function MoviesPage() {
         }
       );
       const data = await response.json();
-      if (!loadedPages.includes(currentPage))
-        setMovies([...movies, ...data.docs]);
+      
+      if (!loadedPages.includes(currentPage)) {
+        const filteredMovies = data.docs.filter(
+          (movie) => movie.name !== "" && movie.poster
+        );  
+        setMovies([...movies, ...filteredMovies]);
+      }
       setLoadedPages([...loadedPages, currentPage]);
-      console.log(loadedPages);
     } catch (error) {
       console.error(error);
     } finally {
@@ -35,7 +39,7 @@ export default function MoviesPage() {
   };
 
   useEffect(() => {
-    loadMoviesOnScroll(currentPage);
+    loadMoviesOnScroll();
   }, [currentPage]);
 
   useEffect(() => {
