@@ -70,8 +70,8 @@ const GenrePage = () => {
         onClick={() => {
           if (currentPage > 0) {
             setCurrentPage(currentPage - 1);
-            window.scrollTo({ top: 0, behavior: "smooth" });
           }
+          window.scrollTo({ top: 0, behavior: "smooth" });
         }}
         disabled={currentPage < 1}
       >
