@@ -10,7 +10,6 @@ export default function MoviesPage() {
   const { currentPage, setCurrentPage } = useContext(MoviesContext);
 
   const loadMoviesOnScroll = async () => {
-    setIsLoading(true);
 
     try {
       if (loadedPages.includes(currentPage)) {
@@ -42,8 +41,6 @@ export default function MoviesPage() {
       setLoadedPages((prevLoadedPages) => [...prevLoadedPages, currentPage]);
     } catch (error) {
       console.error(error);
-    } finally {
-      setIsLoading(false);
     }
   };
 
