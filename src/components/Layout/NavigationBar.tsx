@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom";
+import React, { Link } from "react-router-dom";
 import SearchComponent from "../SearchBar";
-import DropdownComponent from "./DropdownMenu";
+import DropdownComponent from "./DropdownMenu.tsx";
 
 const NavigationBar = () => {
 

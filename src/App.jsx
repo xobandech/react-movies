@@ -4,7 +4,7 @@ import MoviesPage from "./pages/MoviesPage";
 import HomePage from "./pages/HomePage";
 import ShowsPage from "./pages/ShowsPage";
 import MovieDetailsPage from "./pages/MovieDetailPage";
-import Layout from "./components/Layout/Layout";
+import Layout from "./components/Layout/Layout.tsx";
 import "./App.css";
 import SearchResultsPage from "./pages/SearchResultPage";
 import Playground from "./Playground";

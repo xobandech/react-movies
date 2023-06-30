@@ -1,4 +1,5 @@
 import menuImage from '../icons/menu-image.png'
+import React from 'react';
 import { Menu, Transition } from "@headlessui/react";
 import { Link } from 'react-router-dom';
 function classNames(...classes) {

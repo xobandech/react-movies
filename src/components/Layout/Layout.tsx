@@ -1,7 +1,8 @@
-import NavigationBar from "./NavigationBar";
-import Footer from "./Footer";
-import PageContainer from "../PageContainer";
+import React from "react";
 import { Outlet } from "react-router-dom";
+import NavigationBar from "./NavigationBar.tsx";
+import Footer from "./Footer.tsx";
+import PageContainer from "../PageContainer";
 import SideBarMenu from "./Sidebar";
 const Layout = () => {
   return (
