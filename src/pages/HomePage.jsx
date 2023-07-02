@@ -137,7 +137,7 @@ const HomePage = () => {
     <div className="w-[1030px] bg-white">
       <h1>HomePage</h1>
       {genres.map((genre) => (
-        <GenreCard key={genre.slug} genre={genre} />
+        <GenreCard  key={genre.slug} genre={genre} />
       ))}
     </div>
   );
